@@ -88,14 +88,14 @@ class Playground_Welcome {
                     </div>
 
                     <div class="field-group">
-                        <label for="feed_url">Import content from an RSS feed (optional)</label>
+                        <label for="feed_url">Import content from a website (optional)</label>
                         <input
-                            type="url"
+                            type="text"
                             id="feed_url"
                             name="feed_url"
-                            placeholder="https://example.com/feed/"
+                            placeholder="example.com"
                         >
-                        <p class="field-hint">This will import posts from the feed and replace the default "Hello World" post.</p>
+                        <p class="field-hint">Enter a site URL and we'll find and import its RSS feed.</p>
                     </div>
 
                     <div class="field-group">
@@ -188,7 +188,7 @@ class Playground_Welcome {
 
         $messages = [];
 
-        // Update display name
+        // Update display name and site title
         $display_name = sanitize_text_field($_POST['display_name'] ?? '');
         if (!empty($display_name)) {
             $user_id = get_current_user_id();
@@ -196,14 +196,19 @@ class Playground_Welcome {
                 'ID' => $user_id,
                 'display_name' => $display_name,
             ]);
+            update_option('blogname', $display_name . "'s Playground");
             $messages[] = "Name updated to \"{$display_name}\"";
         }
 
         // Import feed
-        $feed_url = esc_url_raw($_POST['feed_url'] ?? '');
+        $feed_url = trim($_POST['feed_url'] ?? '');
         $max_items = intval($_POST['max_items'] ?? 10);
 
         if (!empty($feed_url)) {
+            if (!preg_match('~^https?://~i', $feed_url)) {
+                $feed_url = 'https://' . $feed_url;
+            }
+            $feed_url = esc_url_raw($feed_url);
             $import_result = $this->import_feed($feed_url, $max_items);
             if ($import_result['success']) {
                 $messages[] = $import_result['message'];
@@ -237,9 +242,7 @@ class Playground_Welcome {
     }
 
     private function import_feed($feed_url, $max_items) {
-        if (!class_exists('SimplePie')) {
-            require_once ABSPATH . WPINC . '/class-simplepie.php';
-        }
+        include_once ABSPATH . WPINC . '/feed.php';
 
         $feed = fetch_feed($feed_url);
 
