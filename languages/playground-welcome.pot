@@ -21,6 +21,10 @@ msgid "👋 Welcome to Your WordPress"
 msgstr ""
 
 #: playground-welcome.php
+msgid "Welcome to Your WordPress"
+msgstr ""
+
+#: playground-welcome.php
 msgid "This is a private WordPress that's free and needs no account. It's stored in your browser and will be here when you come back."
 msgstr ""
 

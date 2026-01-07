@@ -49,6 +49,40 @@ class Playground_Welcome {
         return '';
     }
 
+    public static function activate() {
+        $post = get_post(1);
+        if (!$post) {
+            return;
+        }
+
+        add_filter('wp_kses_allowed_html', [__CLASS__, 'allow_svg_tags']);
+
+        wp_update_post([
+            'ID' => $post->ID,
+            'post_title' => __('Welcome to Your WordPress', 'playground-welcome'),
+            'post_content' => self::get_welcome_post_content(),
+            'post_name' => 'welcome-to-your-wordpress',
+        ]);
+    }
+
+    public static function allow_svg_tags($tags) {
+        $tags['svg'] = [
+            'viewbox' => true,
+            'xmlns' => true,
+            'width' => true,
+            'height' => true,
+            'aria-hidden' => true,
+            'focusable' => true,
+            'style' => true,
+        ];
+        $tags['path'] = [
+            'd' => true,
+            'fill-rule' => true,
+            'clip-rule' => true,
+        ];
+        return $tags;
+    }
+
     public function add_admin_page() {
         add_menu_page(
             __('Welcome', 'playground-welcome'),
@@ -305,4 +339,5 @@ class Playground_Welcome {
     }
 }
 
+register_activation_hook(__FILE__, ['Playground_Welcome', 'activate']);
 new Playground_Welcome();
