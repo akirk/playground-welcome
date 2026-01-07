@@ -1,0 +1,11 @@
+{
+	"available": {
+		"de_DE": {
+			"contentDir": "de"
+		}
+	},
+	"fallbacks": {
+		"de_AT": "de_DE",
+		"de_CH": "de_DE"
+	}
+}
