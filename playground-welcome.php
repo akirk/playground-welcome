@@ -84,19 +84,18 @@ class Playground_Welcome {
     }
 
     public function add_admin_page() {
-        add_menu_page(
+        add_submenu_page(
+            'tools.php',
             __('Welcome', 'playground-welcome'),
             __('Welcome', 'playground-welcome'),
             'manage_options',
             'playground-welcome',
-            [$this, 'render_page'],
-            'dashicons-welcome-learn-more',
-            2
+            [$this, 'render_page']
         );
     }
 
     public function enqueue_styles($hook) {
-        if ($hook !== 'toplevel_page_playground-welcome') {
+        if ($hook !== 'tools_page_playground-welcome') {
             return;
         }
 
