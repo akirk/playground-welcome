@@ -89,8 +89,8 @@ msgstr "Brak uprawnień."
 
 #. translators: %s: user's display name
 #: playground-welcome.php
-msgid "%s's Playground"
-msgstr "Playground użytkownika %s"
+msgid "%s's WordPress"
+msgstr "WordPress użytkownika %s"
 
 #. translators: %s: user's display name
 #: playground-welcome.php

@@ -241,7 +241,7 @@ class Playground_Welcome {
                 'display_name' => $display_name,
             ]);
             /* translators: %s: user's display name */
-            update_option('blogname', sprintf(__("%s's Playground", 'playground-welcome'), $display_name));
+            update_option('blogname', sprintf(__("%s's WordPress", 'playground-welcome'), $display_name));
             /* translators: %s: user's display name */
             $messages[] = sprintf(__('Name updated to "%s"', 'playground-welcome'), $display_name);
         }

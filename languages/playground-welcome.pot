@@ -86,7 +86,7 @@ msgstr ""
 
 #. translators: %s: user's display name
 #: playground-welcome.php
-msgid "%s's Playground"
+msgid "%s's WordPress"
 msgstr ""
 
 #. translators: %s: user's display name

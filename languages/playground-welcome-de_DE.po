@@ -89,8 +89,8 @@ msgstr "Zugriff verweigert."
 
 #. translators: %s: user's display name
 #: playground-welcome.php
-msgid "%s's Playground"
-msgstr "%s's Playground"
+msgid "%s's WordPress"
+msgstr "%s's WordPress"
 
 #. translators: %s: user's display name
 #: playground-welcome.php
