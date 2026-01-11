@@ -124,7 +124,6 @@ class Playground_Welcome {
                             type="text"
                             id="display_name"
                             name="display_name"
-                            placeholder="<?php echo esc_attr($current_user->display_name); ?>"
                             autofocus
                         >
                     </div>
