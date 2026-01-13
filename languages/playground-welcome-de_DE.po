@@ -20,7 +20,7 @@ msgid "Welcome"
 msgstr "Willkommen"
 
 #: playground-welcome.php
-msgid "Vision"
+msgid "The Vision"
 msgstr "Die Vision"
 
 #: playground-welcome.php
