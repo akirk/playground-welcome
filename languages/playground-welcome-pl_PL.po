@@ -20,6 +20,10 @@ msgid "Welcome"
 msgstr "Witaj"
 
 #: playground-welcome.php
+msgid "Vision"
+msgstr "Wizja"
+
+#: playground-welcome.php
 msgid "👋 Welcome to Your WordPress"
 msgstr "👋 Witaj w swoim WordPressie"
 
